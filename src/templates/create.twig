@@ -1,0 +1,63 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * hommdemoplugin plugin for Craft CMS 3.x
+ *
+ * hommdemoplugin index.twig
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+#}
+
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\hommdemoplugin\\HommdemopluginAsset") %}
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\indexcpsection\\IndexCPSectionAsset") %}
+
+{# Link for the ? icon at the bottom of the page #}
+{% set docsUrl = "https://github.com/HOMMinteractive/hommdemoplugin/blob/master/README.md" %}
+
+{# The title of this CP section #}
+{% set title = "Demo Plugin" %}
+
+{# The URL to this plugin's base CP section #}
+{% set pluginCpUrl = url('hommdemoplugin') %}
+
+{# Get a URL to an image in our AssetBundle #}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@homm/hommdemoplugin/assetbundles/indexcpsection/dist', true) ~ '/img/Index-icon.svg' %}
+
+
+
+{# Content that should appear in the page header#}
+{% block actionButton %}
+    <div class="buttons">
+        <a href="/admin/hommdemoplugin" class="btn icon">Back</a>
+    </div>
+{% endblock %}
+
+{# The content of the CP Section#}
+{% set content %}
+    <h2>{{ "Neuer Eintrag erstellen für: "~ craft.hommdemoplugin.testVariable|t('hommdemoplugin') }}</h2>
+
+    <form action="/actions/hommdemoplugin/default/create-entry" method="post">
+        <input type="hidden" value="{{ craft.app.request.getParam('edit') }}" name="edit">
+
+    {{ forms.textField({
+        label: 'Name',
+        instructions: '',
+        id: 'name',
+        name: 'name',
+        value: craft.hommdemoplugin.getEntry(craft.app.request.getParam('edit'))['name']})
+    }}
+
+{{ csrfInput() }}
+
+        <button type="submit" class="btn add icon submit">Save</button>
+    </form>
+
+{% endset %}

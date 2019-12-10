@@ -1,0 +1,66 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * hommdemoplugin plugin for Craft CMS 3.x
+ *
+ * hommdemoplugin index.twig
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+#}
+
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\hommdemoplugin\\HommdemopluginAsset") %}
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\indexcpsection\\IndexCPSectionAsset") %}
+
+{# Link for the ? icon at the bottom of the page #}
+{% set docsUrl = "https://github.com/HOMMinteractive/hommdemoplugin/blob/master/README.md" %}
+
+{# The title of this CP section #}
+{% set title = "Demo Plugin" %}
+
+{# The URL to this plugin's base CP section #}
+{% set pluginCpUrl = url('hommdemoplugin') %}
+
+{# Get a URL to an image in our AssetBundle #}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@homm/hommdemoplugin/assetbundles/indexcpsection/dist', true) ~ '/img/Index-icon.svg' %}
+
+
+
+{# Content that should appear in the page header#}
+{% block actionButton %}
+    <div class="buttons">
+        <a href="/admin/hommdemoplugin/create" class="btn add icon">new Entry</a>
+    </div>
+{% endblock %}
+
+{# The content of the CP Section#}
+{% set content %}
+    <h2>{{ "Tabelle: "~ craft.hommdemoplugin.testVariable|t('hommdemoplugin') }}</h2>
+
+    <table class="hommdemoplugin_table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Optionen</th>
+        </tr>
+        {% for key,row in craft.hommdemoplugin.tableData %}
+            <tr>
+            <td>{{ row['id'] }}</td>
+            <td>  {{ row['name'] }}</td>
+            <td>
+                <a href="/admin/hommdemoplugin/create?edit={{ row['id'] }}" class="btn edit icon">Edit</a>
+                <a href="/actions/hommdemoplugin/default/delete-entry?entryId={{ row['id'] }}" class="btn delete icon hommdemoplugin_deleteEntry">Delete</a>
+            </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endset %}

@@ -1,0 +1,24 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * hommdemoplugin plugin for Craft CMS
+ *
+ * HommdemopluginUtility Utility Content
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+#}
+
+<h1>Utilty-Vorschau</h1>
+
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@homm/hommdemoplugin/assetbundles/hommdemopluginutilityutility/dist', true) ~ '/img/HommdemopluginUtility-icon.svg' %}
+
+<img src="{{ iconUrl }}" height="64" width="64" />
+
+<p>Hier könnte man genau gleich wie in den Settings oder in der CP Section Daten ausgeben oder Funktionen einbauen</p>
+
+<p>{{ someVar }}</p>

@@ -1,0 +1,29 @@
+/**
+ * hommdemoplugin plugin for Craft CMS
+ *
+ * Index Field CSS
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+
+
+.hommdemoplugin_table{
+    width:100%;
+}
+
+.hommdemoplugin_table th{
+    font-weight:bold;
+}
+
+.hommdemoplugin_table th,  .hommdemoplugin_table td{
+    padding:10px;
+}
+
+.hommformviewer_loading{
+    position:absolute;
+    display:none;
+}

@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * hommdemoplugin plugin for Craft CMS
+ *
+ * HommdemopluginWidget Widget Settings
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\hommdemoplugin\\HommdemopluginAsset") %}
+
+{{ forms.textField({
+    label: 'Message',
+    instructions: 'Enter a message here.',
+    id: 'message',
+    name: 'message',
+    value: widget['message']})
+}}

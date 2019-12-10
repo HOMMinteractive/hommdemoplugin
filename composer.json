@@ -1,0 +1,43 @@
+{
+    "name": "homm/hommdemoplugin",
+    "description": "Plugin zu Demozwecken",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "hommdemoplugin"
+    ],
+    "support": {
+        "docs": "https://github.com/HOMMinteractive/hommdemoplugin/blob/master/README.md",
+        "issues": "https://github.com/HOMMinteractive/hommdemoplugin/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Domenik Hofer",
+            "homepage": "http://www.homm.ch"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "homm\\hommdemoplugin\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "hommdemoplugin",
+        "handle": "hommdemoplugin",
+        "hasCpSettings": true,
+        "hasCpSection": true,
+        "changelogUrl": "https://raw.githubusercontent.com/HOMMinteractive/hommdemoplugin/master/CHANGELOG.md",
+        "components": {
+            "hommdemopluginService": "homm\\hommdemoplugin\\services\\HommdemopluginService"
+        },
+        "class": "homm\\hommdemoplugin\\Hommdemoplugin"
+    }
+}

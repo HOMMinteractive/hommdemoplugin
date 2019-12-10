@@ -1,0 +1,29 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * hommdemoplugin plugin for Craft CMS 3.x
+ *
+ * hommdemoplugin Settings.twig
+ *
+ * @author    Domenik Hofer
+ * @copyright Copyright (c) 2019 Domenik Hofer
+ * @link      http://www.homm.ch
+ * @package   Hommdemoplugin
+ * @since     0.0.1
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("homm\\hommdemoplugin\\assetbundles\\hommdemoplugin\\HommdemopluginAsset") %}
+{% set iconLogo = view.getAssetManager().getPublishedUrl('@homm/hommdemoplugin/assetbundles/hommdemoplugin/dist', true) ~ '/img/Hommdemoplugin-logo.svg' %}
+
+<img class="settingsLogo" src="{{ iconLogo }}">
+
+{{ forms.textField({
+    label: 'Tabellen',
+    instructions: 'Hier den Tabellennamen eingeben, der angezeigt werden soll.',
+    id: 'tableName',
+    name: 'tableName',
+    value: settings['tableName']})
+}}
